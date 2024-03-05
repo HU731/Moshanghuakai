@@ -28,29 +28,21 @@ public class Graviton : MonoBehaviour
             isAttractee = value;
         }
     }
-    public bool IsAttractor//property
+    public bool IsAttractor
     {
-        get
-        {
-            return isAttractor;
-        }
-        set
-        {
-            if(value==true)
-            {
+        get{return isAttractor;}
+        set {
+            if(value==true) {
                 if(!GravityHandler.attractors.Contains(this.GetComponent<Rigidbody2D>()))
                 GravityHandler.attractors.Add(rigidBody);
-            }
-            else if(value==false)
-            {
+            } else if(value==false) {
                 GravityHandler.attractors.Remove(rigidBody);
             }
             isAttractor = value;
         }
     }
-    [SerializeField] bool isAttractor;//field
-    [SerializeField] bool isAttractee;//field
-
+    [SerializeField] bool isAttractor;
+    [SerializeField] bool isAttractee;
     [SerializeField] Vector3 initialVelocity;
     [SerializeField] bool applyInitialVelocityOnStart;
     void Awake()
@@ -64,7 +56,6 @@ public class Graviton : MonoBehaviour
     }
     void Start()
     {
-        //initialVelocity = new Vector3(Random.Range(-10,10), Random.Range(-10,10), 0);
         if(applyInitialVelocityOnStart)
         {
             ApplyVelocity(initialVelocity);
